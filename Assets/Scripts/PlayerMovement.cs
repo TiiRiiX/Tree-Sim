@@ -6,13 +6,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float interactableRadius;
     [SerializeField] private GameObject interactableTipObject;
     [SerializeField] private Rigidbody2D rigidbody2D;
-    [SerializeField] private Animator animator; 
+    [SerializeField] private Animator animator;
+    [SerializeField] private Animator axeAnimator;
+    [SerializeField] private float interactDelay;
 
     private RaycastHit2D[] interactableResult = new RaycastHit2D[1];
     private int interactableMask;
     private bool isCanInteract = false;
     private Interactable interactObject;
     private Vector2 movement = Vector2.zero;
+    private float lastInteractTime = 0f;
     
     private void Start()
     {
@@ -32,8 +35,21 @@ public class PlayerMovement : MonoBehaviour
         if (!isCanInteract || interactObject == null) return;
         if (Input.GetKeyDown(KeyCode.E))
         {
-            interactObject.Action();
-            RemoveInteraction();
+            if (interactObject.IsNeedDelay)
+            {
+                if (lastInteractTime + interactDelay < Time.time)
+                {
+                    interactObject.Action();
+                    lastInteractTime = Time.time;
+                    RemoveInteraction();
+                    axeAnimator.SetTrigger("Hit");
+                }
+            }
+            else
+            {
+                interactObject.Action();
+                RemoveInteraction();
+            }
         }
     }
 

@@ -21,4 +21,6 @@ public class Tree : MonoBehaviour, Interactable
             Destroy(gameObject);
         }
     }
+
+    public bool IsNeedDelay => true;
 }

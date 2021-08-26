@@ -6,4 +6,6 @@ public class Log : MonoBehaviour, Interactable
     {
         Destroy(gameObject);
     }
+
+    public bool IsNeedDelay => false;
 }
