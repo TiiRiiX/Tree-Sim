@@ -5,11 +5,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float interactableRadius;
     [SerializeField] private GameObject interactableTipObject;
+    [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] private Animator animator; 
 
     private RaycastHit2D[] interactableResult = new RaycastHit2D[1];
     private int interactableMask;
     private bool isCanInteract = false;
     private Interactable interactObject;
+    private Vector2 movement = Vector2.zero;
     
     private void Start()
     {
@@ -61,16 +64,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        var hAxis = Input.GetAxis("Horizontal");
-        var vAxis = Input.GetAxis("Vertical");
-        if (hAxis != 0)
-        {
-            transform.position += Vector3.right * hAxis * speed * Time.deltaTime;
-        }
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+    }
 
-        if (vAxis != 0)
-        {
-            transform.position += Vector3.up * vAxis * speed * Time.deltaTime;
-        }
+    private void FixedUpdate()
+    {
+        rigidbody2D.MovePosition(rigidbody2D.position + movement * speed * Time.fixedDeltaTime);
     }
 }
