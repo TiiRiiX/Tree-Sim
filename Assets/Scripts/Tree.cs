@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Tree : MonoBehaviour, Interactable
+public class Tree : MonoBehaviour, IInteractable
 {
     [SerializeField] private int hitToFall;
     [SerializeField] private GameObject logsPrefab;

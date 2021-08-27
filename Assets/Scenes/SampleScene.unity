@@ -295,7 +295,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -557,6 +557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 357803085}
   - component: {fileID: 357803083}
+  - component: {fileID: 357803089}
   - component: {fileID: 357803086}
   - component: {fileID: 357803084}
   - component: {fileID: 357803088}
@@ -581,12 +582,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  interactableRadius: 2
-  interactableTipObject: {fileID: 179886452}
   rigidbody2D: {fileID: 357803084}
   animator: {fileID: 357803088}
-  axeAnimator: {fileID: 118990281}
-  interactDelay: 1
 --- !u!50 &357803084
 Rigidbody2D:
   serializedVersion: 4
@@ -621,6 +618,7 @@ Transform:
   m_Children:
   - {fileID: 446968029}
   - {fileID: 118990279}
+  - {fileID: 1925943603}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -689,7 +687,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6598946016331564889, guid: 23748c298f885bf4c89671f6d30f562b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -720,6 +718,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &357803089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357803082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b4cfbe347337effb809266d9305674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableRadius: 2
+  interactableTipObject: {fileID: 179886452}
+  axeAnimator: {fileID: 118990281}
+  interactDelay: 1
+  pickUpTransform: {fileID: 1925943603}
 --- !u!1 &445787533
 GameObject:
   m_ObjectHideFlags: 0
@@ -78025,6 +78040,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1925943602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1925943603}
+  m_Layer: 0
+  m_Name: PickUp Place
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1925943603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925943602}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.849, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 357803085}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2017812874
 GameObject:
   m_ObjectHideFlags: 0
@@ -78133,6 +78178,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7896633328285048900, guid: 5a5fbae61c4e962bab610316dd36abc6, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9859427
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896633328285048900, guid: 5a5fbae61c4e962bab610316dd36abc6, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0309664
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896633328285048900, guid: 5a5fbae61c4e962bab610316dd36abc6, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.005302727
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896633328285048900, guid: 5a5fbae61c4e962bab610316dd36abc6, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.8065323
+      objectReference: {fileID: 0}
     - target: {fileID: 7896633328285048902, guid: 5a5fbae61c4e962bab610316dd36abc6, type: 3}
       propertyPath: m_RootOrder
       value: 0

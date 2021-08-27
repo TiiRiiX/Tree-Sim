@@ -1,11 +1,4 @@
-using UnityEngine;
-
-public class Log : MonoBehaviour, Interactable
+public class Log : PickUpObject
 {
-    public void Action()
-    {
-        Destroy(gameObject);
-    }
-
-    public bool IsNeedDelay => false;
+    
 }
