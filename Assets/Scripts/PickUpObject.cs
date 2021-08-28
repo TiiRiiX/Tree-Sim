@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class PickUpObject : MonoBehaviour, IInteractable
 {
-    private bool isPicked = false;
+    [SerializeField] private InventoryStoreManager storeManager;
+    [SerializeField] private InventoryItem item;
     
     public void Action()
     {
-        if (!isPicked)
+        if (storeManager.CanAddItems)
         {
-            gameObject.layer = LayerMask.NameToLayer("Default");
-            isPicked = true;
+            storeManager.AddItem(item);
+            Destroy(gameObject);   
         }
     }
 

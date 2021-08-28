@@ -23,4 +23,6 @@ public class Tree : MonoBehaviour, IInteractable
     }
 
     public bool IsNeedDelay => true;
+    public bool IsPickUp => false;
+    public bool IsPutDown => false;
 }
